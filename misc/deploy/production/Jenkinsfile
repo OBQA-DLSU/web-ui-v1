@@ -5,6 +5,9 @@ node {
      sh "git rev-parse --short HEAD > .git/commit-id"                        
      commit_id = readFile('.git/commit-id').trim()
    }
+   stage('Install dependencies') {
+     sh 'npm install'
+   }
    stage('unit tests') {
       sh "ng test --watch false"
    }
