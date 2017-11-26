@@ -1,0 +1,22 @@
+node {
+   def commit_id
+   stage('Preparation') {
+     checkout scm
+     sh "git rev-parse --short HEAD > .git/commit-id"                        
+     commit_id = readFile('.git/commit-id').trim()
+   }
+   stage('unit tests') {
+      sh "ng test --watch false"
+   }
+
+   stage('protractor tests') {
+     sh "npm run e2e"
+   }
+   stage('heroku-create-staging') {
+     sh 'echo Creating dlsu-obqa-web-ui-staging'
+     sh 'heroku create dlsu-obqa-web-ui-staging'
+     sh 'git checkout staging'
+     sh 'git push heroku origin/staging:master'
+     sh 'heroku ps:scale web=1'     
+   }
+}
