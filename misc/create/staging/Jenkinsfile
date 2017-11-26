@@ -27,7 +27,7 @@ node {
    stage('heroku-create-staging') {
      sh 'echo Creating dlsu-obqa-web-ui-staging'
      sh 'heroku create dlsu-obqa-web-ui-staging'
-     sh 'git checkout staging'
+     sh 'git checkout master'
      sh 'git push heroku master'
      sh 'heroku ps:scale web=1'     
    }
