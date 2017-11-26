@@ -6,14 +6,22 @@ node {
      commit_id = readFile('.git/commit-id').trim()
    }
    stage('Install dependencies') {
-     sh 'npm install'
+     nodejs(nodeJSInstallationName: 'Node JS LTS') {
+       sh 'npm install'
+     }
    }
    stage('unit tests') {
+     nodejs(nodeJSInstallationName: 'Node JS LTS') {
       sh "ng test --watch false"
+     }
    }
 
    stage('protractor tests') {
-     sh "npm run e2e"
+     stage('unit tests') {
+     nodejs(nodeJSInstallationName: 'Node JS LTS') {
+      sh "npm run e2e"
+     }
+    }
    }
    stage('heroku-deploy') {
      sh '''
