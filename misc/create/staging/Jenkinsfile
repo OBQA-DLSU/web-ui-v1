@@ -17,13 +17,13 @@ node {
      }
    }
 
-   stage('protractor tests') {
-     stage('unit tests') {
-     nodejs(nodeJSInstallationName: 'Node JS LTS') {
-      sh "npm run e2e"
-     }
-    }
-   }
+  //  stage('protractor tests') {
+  //    stage('unit tests') {
+  //    nodejs(nodeJSInstallationName: 'Node JS LTS') {
+  //     sh "npm run e2e"
+  //    }
+  //   }
+  //  }
    stage('heroku-create-staging') {
      sh 'echo Creating dlsu-obqa-web-ui-staging'
      sh 'heroku create dlsu-obqa-web-ui-staging'
