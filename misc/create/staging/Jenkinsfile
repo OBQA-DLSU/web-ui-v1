@@ -8,12 +8,11 @@ node {
    stage('Install dependencies') {
      nodejs(nodeJSInstallationName: 'Node JS LTS') {
        sh 'npm install'
-       sh 'npm install -g @angular/cli'
      }
    }
    stage('unit tests') {
      nodejs(nodeJSInstallationName: 'Node JS LTS') {
-      sh "ng test --watch false"
+      sh "npm test"
      }
    }
 
