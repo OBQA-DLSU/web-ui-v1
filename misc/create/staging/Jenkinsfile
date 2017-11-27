@@ -12,7 +12,7 @@ node {
    }
    stage('unit tests') {
      nodejs(nodeJSInstallationName: 'Node JS LTS') {
-      sh "npm test"
+      sh "npm test --watch false"
      }
    }
 
@@ -26,8 +26,7 @@ node {
    stage('heroku-create-staging') {
      sh 'echo Creating dlsu-obqa-web-ui-staging'
      sh 'heroku create dlsu-obqa-web-ui-staging'
-     sh 'git checkout master'
-     sh 'git push heroku master'
+     sh 'git push heroku origin/staging:master'
      sh 'heroku ps:scale web=1'     
    }
 }
