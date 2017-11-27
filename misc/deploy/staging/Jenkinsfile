@@ -10,7 +10,7 @@ node {
        sh 'npm install'
      }
    }
-   stage('unit tests') {
+   stage('Unit tests') {
      nodejs(nodeJSInstallationName: 'Node JS LTS') {
       sh "ng test --watch false"
      }
@@ -23,7 +23,7 @@ node {
   //    }
   //   }
   //  }
-   stage('heroku-deploy') {
+   stage('heroku-deploy-staging') {
      sh '''
         # exit 1 on errors
         set -e
