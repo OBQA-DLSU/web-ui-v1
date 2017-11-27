@@ -8,7 +8,6 @@ node {
    stage('Install dependencies') {
      nodejs(nodeJSInstallationName: 'Node JS LTS') {
        sh 'npm install'
-       sh 'npm install -g @angular/cli'
      }
    }
    stage('unit tests') {
@@ -27,8 +26,7 @@ node {
    stage('heroku-create-staging') {
      sh 'echo Creating dlsu-obqa-web-ui'
      sh 'heroku create dlsu-obqa-web-ui'
-     sh 'git checkout master'
-     sh 'git push heroku master'
+     sh 'git push heroku origin/master:master'
      sh 'heroku ps:scale web=1'     
    }
 }
