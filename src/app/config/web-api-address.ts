@@ -1,5 +1,6 @@
+const env: string = 'dev';
 export const WEB_API_URL = (): string => {
-  switch (process.env.NODE_ENV) {
+  switch (env) {
     case 'staging':
       return '';
     case 'prod':
