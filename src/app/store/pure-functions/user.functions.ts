@@ -1,4 +1,13 @@
 import { tassign } from 'tassign';
+
+export const toggleUserCreate = (state, action) => {
+  return tassign(state, {
+    ...state,
+    toggleSignup: true,
+    loader: false
+  });
+};
+
 export const userCreateAttempt = (state, action) => {
   return tassign(state, {
     ...state,
