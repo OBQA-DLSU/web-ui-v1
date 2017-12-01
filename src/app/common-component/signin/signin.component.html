@@ -1,0 +1,20 @@
+<div>
+  <legend class="text-success">Log-in</legend>
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+    <div >
+      <label for="loginName" class="text-info" >Email address</label>
+      <input formControlName="loginName" type="email" class="form-control" id="loginName" aria-describedby="emailHelp" placeholder="user@dlsu.edu.ph">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div>
+      <label for="password" class="text-info" >Password</label>
+      <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password" >
+    </div>
+    <div *ngIf="signinForm.valid; else disable">
+        <button type="submit"  [ngClass]="{'btn btn-primary btn-block': signinForm.valid }">Login</button>
+    </div>
+    <ng-template #disable>
+        <button type="submit"  class="btn btn-primary btn-block" disabled>Login</button>
+    </ng-template>
+  </form>
+</div>

@@ -1,0 +1,30 @@
+<legend class="text-success">Sign-up</legend>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div class="form-group" >
+    <input formControlName="fname" type="text" class="form-control" id="firstname" placeholder="Firstname">
+  </div>
+  <div class="form-group" >
+      <input formControlName="lname" type="text" class="form-control" id="lastname" placeholder="Lastname">
+    </div>
+  <div class="form-group" >
+    <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email ex: user@dlsu.edu.ph">
+  </div>
+  <div class="form-group">
+    <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password" >
+  </div>
+  <div class="form-group">
+    <input formControlName="confirmation" type="password" class="form-control" id="confirmation" placeholder="Confirmed Password" >
+  </div>
+  <div class="form-group">
+    <input formControlName="invitationCode" type="text" class="form-control" id="invitationCode" placeholder="Invitation Code" >
+  </div>
+  <div *ngIf="signupForm.valid; else disable">
+      <button type="submit"  [ngClass]="{'btn btn-primary btn-block': signupForm.valid }">Signup</button>
+  </div>
+  <ng-template #disable>
+      <button type="submit"  class="btn btn-primary btn-block" disabled>Signup</button>
+  </ng-template>
+  <div>
+      <button (click)="signupCancel()" class="btn btn-warning btn-block">Cancel</button>
+  </div>
+</form>

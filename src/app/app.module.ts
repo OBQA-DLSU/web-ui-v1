@@ -9,11 +9,14 @@ import { AdminModule } from './pages/admin/admin.module';
 import { MyClassModule } from './pages/my-class/my-class.module';
 
 import { ServiceModule } from './services/service.module';
+import { NavComponent } from './common-component/nav/nav.component';
+import { CommonComponentModule } from './common-component/common-component.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { ServiceModule } from './services/service.module';
         loadChildren: () => MyClassModule
       }
     ]),
-    ServiceModule.forRoot()
+    ServiceModule.forRoot(),
+    CommonComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]
